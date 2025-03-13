@@ -9,7 +9,6 @@ body{
     padding-right: 3%;
 }
 
-
 header{
     display: flex;
     flex-direction: row;
@@ -44,6 +43,7 @@ header img{
     border: 5px solid black;
     border-radius: 10px;
 }
+
 main div{
     background-color: white;
     margin: 5%;
@@ -70,15 +70,19 @@ footer{
     padding-bottom: 2%;
 }
 
-
+#kundvagn{
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 10px;
+}
 
 @media screen and (min-width: 641px) and (max-width: 1024px) {
 
-    header h1{
+    #rubrik{
         padding-left: 30%;
     }
 
-    header a{
+    #vagn{
         padding-left: 20%
     }
 
@@ -93,11 +97,11 @@ footer{
 
 @media screen and (min-width: 1025px) {
     
-    header h1{
+    #rubrik{
         padding-left: 43%;
     }
 
-    header a{
+    #vagn{
         padding-left: 33%
     }
 
@@ -107,8 +111,5 @@ footer{
         grid-template-rows: 1fr 1fr;
     }
 
-    img{
-      
-    }
 }
 
