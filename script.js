@@ -1,7 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartKey = "cart";
     const buttons = document.querySelectorAll("main button");
-    const cartContainer = document.querySelector("#kundvagn ul");
+    const cartContainers = document.querySelectorAll("#kundvagn ul, #kundvagn-lista");
+
+    function updateCartDisplay() {
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        cartContainers.forEach(container => {
+            if (container) {
+                container.innerHTML = cart.map(product => 
+                    `<li><img src="${product.image}" width="50"> ${product.name} - ${product.price}</li>`
+                ).join("");
+            }
+        });
+    }
 
     buttons.forEach(button => {
         button.addEventListener("click", () => {
@@ -13,13 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 image: productDiv.querySelector("img").src
             });
             localStorage.setItem(cartKey, JSON.stringify(cart));
+            updateCartDisplay();
         });
     });
 
-    if (cartContainer) {
-        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-        cartContainer.innerHTML = cart.map(product => 
-            `<li><img src="${product.image}" width="50"> ${product.name} - ${product.price}</li>`
-        ).join("");
-    }
+    updateCartDisplay();
 });
